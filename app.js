@@ -9,6 +9,22 @@ app.use(bodyParser.json());
 
 app.use(express.json());
 
+
+// Enable CORS for all origins (You can restrict it to specific origins if needed)
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:8080"
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins, // Set the allowed origin(s)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Set allowed HTTP methods
+    credentials: true, // Allow credentials (cookies, authentication headers, etc.)
+    optionsSuccessStatus: 204,
+  })
+);
+
 app.use((req, res, next) => {
   // Attach CORS headers
   // Required when using a detached backend (that runs on a different domain)
