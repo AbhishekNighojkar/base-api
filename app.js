@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid').v4
 const { getStoredPosts, storePosts } = require('./data/posts');
+const cors = require('cors');
 
 const app = express();
 
